@@ -74,3 +74,11 @@ nacos/nacos-server:v2.1.0-slim
 ```
 5. 启动完成后，访问下面地址：http://192.168.18.128:8848/nacos/，注意将192.168.18.128替换为你自己的虚拟机IP地址。
 6. 首次访问会跳转到登录页，账号密码都是nacos
+
+7. 在idea项目中双击shift全局搜索server-addr，将nacos的server-addr改为`192.168.18.128:8848`
+
+## TODO
+user-service/src/main/resources/application.yaml
+pay-service/src/main/resources/application.yaml
+trade-service/src/main/resources/application.yaml
+以及各个db的配置

@@ -12,7 +12,7 @@ spring:
     password: ${hm.db.pw}
   cloud:
     nacos:
-      server-addr: "***"
+      server-addr: "192.168.18.128:8848"
   rabbitmq:
     host: "***" # 你的虚拟机IP
     port: 5672 # 端口
