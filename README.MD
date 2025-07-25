@@ -1,3 +1,22 @@
+# 整体代码说明
+## hm-api
+存openFeign远程调用的api，类似于rpc当中的代理
+以及openFeign的配置类和DTO
+client就是各个客户端代理
+fallback用于sentinel的降级、快速失败
+## hm-common
+- 用到的通用异常处理器类
+- 各种异常类
+- 各种配置类，如json、Mq、Mvc、MyBatis
+- 分页查询用到的通用类、通用结果类
+- 拦截器，用于用户登录
+- 各种工具类，比如BeanUtils、存储用户登录信息的UserContext实际上就是ThreadLocal的封装
+## hm-gateway
+SpringCloudGateway，也就是网关。
+做网关鉴权：登录校验和传递用户信息；做统一路由等等
+## hm-nginx
+前端以及nginx代理，转发请求到后端
+# 使用指南、项目开启指南
 ## 可以参考这个文档
 https://b11et3un53m.feishu.cn/wiki/R4Sdwvo8Si4kilkSKfscgQX0niB
 ## 先安装虚拟机，并在windows使用finalShell或其他连接虚拟机
@@ -28,6 +47,7 @@ docker run -d \
 注意，重启docker的mysql只需要`docker ps -a`查看是否已存在mysql容器，存在则直接启动`docker start mysql`
 
 ### windows下载navicat，图形化方式操作数据库，远程连接到虚拟机的mysql容器
+使用navicat运行各个sql脚本（**除了nacos.sql和user.sql**），建立各个微服务的数据库
 ## 前端Nginx部署
 1. 将本文件夹中的hmall-nginx放到一个不含中文的文件夹，比如我放到D盘
 2. 进入该文件夹，**使用管理员cmd运行下面的不同命令来进行nginx部署**
@@ -77,8 +97,19 @@ nacos/nacos-server:v2.1.0-slim
 
 7. 在idea项目中双击shift全局搜索server-addr，将nacos的server-addr改为`192.168.18.128:8848`
 
-## TODO
+## yaml文件的mysql的db配置
+**注意除了hm-api、hm-common、hm-gateway、hm-service**
 user-service/src/main/resources/application.yaml
 pay-service/src/main/resources/application.yaml
 trade-service/src/main/resources/application.yaml
+cart-service/src/main/resources/application.yaml
+item-service/src/main/resources/application.yaml
+
 以及各个db的配置
+pay-service/src/main/resources/application-local.yaml
+pay-service/src/main/resources/application-dev.yaml
+
+host:192.168.18.128
+password:123
+注意pay-sevice的application.yaml 中数据库配置hm-pay库
+
