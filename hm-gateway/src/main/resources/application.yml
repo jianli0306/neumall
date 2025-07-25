@@ -3,8 +3,8 @@ server:
 hm:
   jwt:
     location: classpath:hmall.jks
-    alias: "***"
-    password: "***"
+    alias: "hmall"
+    password: "hmall123"
     tokenTTL: 30m
   auth:
     excludePaths:

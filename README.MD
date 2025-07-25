@@ -113,3 +113,78 @@ host:192.168.18.128
 password:123
 注意pay-sevice的application.yaml 中数据库配置hm-pay库
 
+## 网关配置 
+1. jwt配置，主要是alias和password
+```yaml
+hm:
+  jwt:
+    location: classpath:hmall.jks # 秘钥地址
+    alias: hmall # 秘钥别名
+    password: hmall123 # 秘钥文件密码
+    tokenTTL: 30m # 登录有效期
+  auth:
+    excludePaths: # 无需登录校验的路径
+      - /search/**
+      - /users/login
+      - /items/**
+```
+
+## nacos做配置中心 共享配置
+以下配置都是在nacos控制台：http://192.168.18.128:8848/nacos/
+账号密码都是nacos
+左边点击配置管理-配置列表，点击右边加号
+### jdbc配置
+
+![jdbc的nacos共享配置](jdbc的nacos共享配置.png)
+```yaml
+spring:
+  datasource:
+    url: jdbc:mysql://${hm.db.host:192.168.150.101}:${hm.db.port:3306}/${hm.db.database}?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${hm.db.un:root}
+    password: ${hm.db.pw:123}
+mybatis-plus:
+  configuration:
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+  global-config:
+    db-config:
+      update-strategy: not_null
+      id-type: auto
+```
+### log配置
+命名为shared-log.yaml，Group同上DEFAULT_GROUP，描述自定
+```yaml
+logging:
+  level:
+    com.hmall: debug
+  pattern:
+    dateformat: HH:mm:ss:SSS
+  file:
+    path: "logs/${spring.application.name}"
+```
+
+### swagger配置，也就是接口展示的页面配置
+命名为shared-swagger.yaml，Group同上DEFAULT_GROUP，描述自定
+```yaml
+knife4j:
+  enable: true
+  openapi:
+    title: ${hm.swagger.title:黑马商城接口文档}
+    description: ${hm.swagger.description:黑马商城接口文档}
+    email: ${hm.swagger.email:zhanghuyi@itcast.cn}
+    concat: ${hm.swagger.concat:虎哥}
+    url: https://www.itcast.cn
+    version: v1.0.0
+    group:
+      default:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - ${hm.swagger.package}
+```
+
+### TODO todo ：hm.db.database
+### TODO user-service还没用到共享配置
+### 代码用的购物车共享配置，用作配置热更新展示
+
+
