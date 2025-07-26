@@ -112,7 +112,7 @@ pay-service/src/main/resources/application-dev.yaml
 host:192.168.18.128
 password:123
 注意pay-sevice的application.yaml 中数据库配置hm-pay库
-
+注意user—service的jwt配置，和下面网关jwt配置一样
 ## 网关配置 
 1. jwt配置，主要是alias和password
 ```yaml
@@ -134,7 +134,6 @@ hm:
 账号密码都是nacos
 左边点击配置管理-配置列表，点击右边加号
 ### jdbc配置
-
 ![jdbc的nacos共享配置](jdbc的nacos共享配置.png)
 ```yaml
 spring:
@@ -183,8 +182,29 @@ knife4j:
           - ${hm.swagger.package}
 ```
 
-### TODO todo ：hm.db.database
-### TODO user-service还没用到共享配置
-### 代码用的购物车共享配置，用作配置热更新展示
+### 注意：user-service还没用到共享配置
+### 购物车共享配置（代码用，业务的配置），用作配置热更新展示
+依然是nacos新建配置：cart-service.yaml,DEFAULT_GROUP
+```yaml
+hm:
+  cart:
+    maxAmount: 1 # 购物车商品数量上限
+```
 
+### 下面是微服务保护和分布式事务
+### 微服务保护 sentinel
+使用：
+1. 将课前文件中的（第二次传的文件）sentinel-dashboard-1.8.6.jar包放在任意非中文、不包含特殊字符的目录下，重命名为sentinel-dashboard.jar
+2. 在jar包所在目录使用控制台，运行以下命令
+```Bash
+java -Dserver.port=8090 -Dcsp.sentinel.dashboard.server=localhost:8090 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar
+```
+3. 访问http://localhost:8090页面，就可以看到sentinel的控制台了：
+4. 账号密码都是sentinel
+微服务保护只保护了cart-service
+因为：已经在cart-service的application.yml中添加了配置（不用改）
+然后按照https://b11et3un53m.feishu.cn/wiki/QfVrw3sZvihmnPkmALYcUHIDnff的day05在控制台添加限流规则即可
 
+### 分布式事务 seata
+
+### 消息队列 rabbitMQ
