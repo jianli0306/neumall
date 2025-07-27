@@ -1,4 +1,5 @@
 # 整体代码说明
+## hm-service，不用管，微服务分离前的原项目，同理HMallApplication也不用启动
 ## hm-api
 存openFeign远程调用的api，类似于rpc当中的代理
 以及openFeign的配置类和DTO
@@ -16,11 +17,19 @@ SpringCloudGateway，也就是网关。
 做网关鉴权：登录校验和传递用户信息；做统一路由等等
 ## hm-nginx
 前端以及nginx代理，转发请求到后端
-# 配置都有，以后重启项目的时候看这一节（包括navicat连接不上mysql）
+
+***
+# 配置都有，重启项目的时候看这一节（包括navicat连接不上mysql，打不开nacos控制台）
+- 镜像拉不下来：换镜像，可以使用临时命令拉，卡在下载阶段就重启虚拟机。
+- nacos控制无法访问，`docker restart nacos`重启nacos容器
 - navicat连接不上数据库，重启虚拟机，并重启mysql容器，见下面这一行
 - 重启虚拟机的时候，docker（docker不自动启动的搜一下怎么在虚拟机开启的时候自启docker）会自动开启nacos容器，但是不会自动重启mysql容器：
-  - 所以`docker restart mysql`重启mysql容器
-
+  - `docker restart mysql`重启mysql容器
+  - `docker restart nacos`重启nacos容器
+  - 访问http://192.168.18.128:8848/nacos/正常后，`docker restart seata`重启seata容器，否则seata启动不起来
+- cmd方式启动nginx
+- idea启动各个服务，结果如图：![img.png](img.png)
+***
 # 项目开启指南
 ## 可以参考这个文档
 https://b11et3un53m.feishu.cn/wiki/R4Sdwvo8Si4kilkSKfscgQX0niB
@@ -248,3 +257,48 @@ seata:
 ```
 6. seata需要使用db的数据，所以使用navicat运行课前资料中的`seata-at.sql`分别文件导入`hm-trade`、`hm-cart`、`hm-item`三个数据库中，注意是数据库层面：右键数据库运行脚本。
 ### 消息队列 rabbitMQ
+1. 运行docker命令启动RabbitMQ
+```Bash
+docker run \
+ -e RABBITMQ_DEFAULT_USER=itheima \
+ -e RABBITMQ_DEFAULT_PASS=123321 \
+ -v mq-plugins:/plugins \
+ --name mq \
+ --hostname mq \
+ -p 15672:15672 \
+ -p 5672:5672 \
+ --network hm-net\
+ -d \
+ rabbitmq:3.8-management
+```
+2. 访问 http://192.168.18.128:15672即可查看RabbitMQ控制台，账号itheima，密码123321
+3. 改造配置 抽取到nacos中
+4. 安装插件实现延迟队列（15分钟延迟消息实现自动取消未支付订单，在trade-service的OrderServiceImpl实现方法，还没实现，整体过程要熟悉）
+5. 还没实现：抽取RabbitMQ工具类，放到hm-commom中，
+```java
+public class RabbitMqHelper {
+
+    private final RabbitTemplate rabbitTemplate;
+
+    public void sendMessage(String exchange, String routingKey, Object msg){
+
+    }
+
+    public void sendDelayMessage(String exchange, String routingKey, Object msg, int delay){
+
+    }
+
+    public void sendMessageWithConfirm(String exchange, String routingKey, Object msg, int maxRetries){
+        
+    }
+}
+```
+6. 定义一个自动配置类MqConsumeErrorAutoConfiguration，内容包括：
+- 声明一个交换机，名为error.direct，类型为direct
+- 声明一个队列，名为：微服务名 + error.queue，也就是说要动态获取
+- 将队列与交换机绑定，绑定时的RoutingKey就是微服务名
+- 声明RepublishMessageRecoverer，消费失败消息投递到上述交换机
+- 给配置类添加条件，当spring.rabbitmq.listener.simple.retry.enabled为true时触发
+```java
+@Configuration@ConditionalOnProperty(value = "spring.rabbitmq.listener.simple.retry.enabled", havingValue = "true")public class MqConsumeErrorAutoConfiguration {​    @Value("${spring.application.name}")    private String SERVICE_NAME;​    @Bean    public DirectExchange errorDirectExchange() {        return ExchangeBuilder                .directExchange("error.direct")                .build();    }​    @Bean    public Queue serviceErrorQueue() {        return QueueBuilder                .durable(SERVICE_NAME + ".error.queue")                .build();    }​    @Bean    public Binding serviceBinding() {        return BindingBuilder                .bind(serviceErrorQueue())                .to(errorDirectExchange())                .with(SERVICE_NAME);    }}
+```
