@@ -272,33 +272,21 @@ docker run \
  rabbitmq:3.8-management
 ```
 2. 访问 http://192.168.18.128:15672即可查看RabbitMQ控制台，账号itheima，密码123321
-3. 改造配置 抽取到nacos中
-4. 安装插件实现延迟队列（15分钟延迟消息实现自动取消未支付订单，在trade-service的OrderServiceImpl实现方法，还没实现，整体过程要熟悉）
-5. 还没实现：抽取RabbitMQ工具类，放到hm-commom中，
-```java
-public class RabbitMqHelper {
-
-    private final RabbitTemplate rabbitTemplate;
-
-    public void sendMessage(String exchange, String routingKey, Object msg){
-
-    }
-
-    public void sendDelayMessage(String exchange, String routingKey, Object msg, int delay){
-
-    }
-
-    public void sendMessageWithConfirm(String exchange, String routingKey, Object msg, int maxRetries){
-        
-    }
-}
+3. 创建一个虚拟主机/hmall
+4. 改造配置 抽取到nacos中的共享配置:shared-mq.yaml
+```yaml
+spring:
+  rabbitmq:
+    host: ${hm.mq.host:192.168.18.128} # 主机名
+    port: ${hm.mq.port:5672} # 端口
+    virtual-host: ${hm.mq.vhost:/hmall} # 虚拟主机
+    username: ${hm.mq.un:hmall} # 用户名
+    password: ${hm.mq.pw:123} # 密码
 ```
-6. 定义一个自动配置类MqConsumeErrorAutoConfiguration，内容包括：
+4. 安装插件实现延迟队列（15分钟延迟消息实现自动取消未支付订单，在trade-service的OrderServiceImpl实现方法，还没实现，整体过程要熟悉）
+5. 定义一个自动配置类MqConsumeErrorAutoConfiguration，内容包括：
 - 声明一个交换机，名为error.direct，类型为direct
 - 声明一个队列，名为：微服务名 + error.queue，也就是说要动态获取
 - 将队列与交换机绑定，绑定时的RoutingKey就是微服务名
 - 声明RepublishMessageRecoverer，消费失败消息投递到上述交换机
 - 给配置类添加条件，当spring.rabbitmq.listener.simple.retry.enabled为true时触发
-```java
-@Configuration@ConditionalOnProperty(value = "spring.rabbitmq.listener.simple.retry.enabled", havingValue = "true")public class MqConsumeErrorAutoConfiguration {​    @Value("${spring.application.name}")    private String SERVICE_NAME;​    @Bean    public DirectExchange errorDirectExchange() {        return ExchangeBuilder                .directExchange("error.direct")                .build();    }​    @Bean    public Queue serviceErrorQueue() {        return QueueBuilder                .durable(SERVICE_NAME + ".error.queue")                .build();    }​    @Bean    public Binding serviceBinding() {        return BindingBuilder                .bind(serviceErrorQueue())                .to(errorDirectExchange())                .with(SERVICE_NAME);    }}
-```

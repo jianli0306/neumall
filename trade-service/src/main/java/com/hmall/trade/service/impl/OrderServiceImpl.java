@@ -3,6 +3,7 @@ package com.hmall.trade.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hmall.api.client.CartClient;
 import com.hmall.api.client.ItemClient;
+import com.hmall.api.client.PayClient;
 import com.hmall.api.dto.ItemDTO;
 import com.hmall.api.dto.OrderDetailDTO;
 import com.hmall.common.exception.BadRequestException;
@@ -46,6 +47,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     private final IOrderDetailService detailService;
     private final CartClient cartClient;
     private final RabbitTemplate rabbitTemplate;
+    private final PayClient payClient;
 
     @Override
     @GlobalTransactional
@@ -138,6 +140,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public void cancelOrder(Long orderId) {
+        // 修改订单状态为已关闭
+        lambdaUpdate()
+                .set(Order::getStatus,5)
+                .eq(Order::getId,orderId)
+                .update();
+        // 修改支付状态为已取消
         // todo
     }
 }
