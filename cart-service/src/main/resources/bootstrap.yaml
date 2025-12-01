@@ -5,7 +5,7 @@ spring:
     active: dev
   cloud:
     nacos:
-      server-addr: "192.168.18.128:8848"   # IP+端口号
+      server-addr: "192.168.203.131:8848"   # IP+端口号
       config:
         file-extension: yaml
         shared-configs:

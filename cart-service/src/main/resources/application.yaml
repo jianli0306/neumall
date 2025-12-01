@@ -9,7 +9,7 @@ hm:
   db:
     database: hm-cart
   swagger:
-    title: "黑马商场购物车服务接口文档"
+    title: "东大商场购物车服务接口文档"
     package: com.hmall.cart.controller
 spring:
   cloud:

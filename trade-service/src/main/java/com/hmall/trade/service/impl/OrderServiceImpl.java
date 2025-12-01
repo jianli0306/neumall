@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
  * 服务实现类
  * </p>
  *
- * @author 虎哥
+ * @author yinjianli
  * @since 2023-05-05
  */
 @Service
@@ -92,13 +92,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
             throw new RuntimeException("库存不足！");
         }
 
-        //
+        //发送延迟消息
         rabbitTemplate.convertAndSend(
                 MQConstants.DELAY_EXCHANGE_NAME,
                 MQConstants.DELAY_ORDER_KEY,
                 order.getId(),
                 message -> {
-                    message.getMessageProperties().setDelay(10000);
+                    message.getMessageProperties().setDelay(100000);
                     return message;
                 });
 

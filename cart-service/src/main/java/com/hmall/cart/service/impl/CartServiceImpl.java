@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * 订单详情表 服务实现类
  * </p>
  *
- * @author 虎哥
+ * @author yinjianli
  * @since 2023-05-05
  */
 @Service
@@ -143,8 +143,8 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
 
     private void checkCartsFull(Long userId) {
         int count = lambdaQuery().eq(Cart::getUserId, userId).count();
-        if (count >= cartProPerties.getMaxItems()) {
-            throw new BizIllegalException(StrUtil.format("用户购物车课程不能超过{}", cartProPerties.getMaxItems()));
+        if (count >= cartProPerties.getMaxAmount()) {
+            throw new BizIllegalException(StrUtil.format("用户购物车课程不能超过{}", cartProPerties.getMaxAmount()));
         }
     }
 

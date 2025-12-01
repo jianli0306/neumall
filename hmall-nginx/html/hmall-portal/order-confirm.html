@@ -194,15 +194,18 @@
           })
           this.params.details = details;
           axios.post("/orders", this.params)
-            .then(resp => {
-              // 获取订单id
-              let orderId = resp;
+            .then(orderId => {
+              if (!orderId) {
+                alert("下单失败，服务没有返回订单ID！")
+                return;
+              }
+              
               // 跳转到支付页面
               location.href = "/pay.html?id=" + orderId
             })
             .catch(err => {
-              alert("下单失败，请重试！")
-              console.log(err)
+              console.log("下单异常：", err)
+              alert("下单失败，请打开控制台(F12)查看具体错误信息")
             });
         },
         handleMobile(mobile) {

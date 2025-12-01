@@ -9,5 +9,5 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "hm.cart")
 public class CartProPerties {
-    private Integer maxItems;
+    private Integer maxAmount;
 }

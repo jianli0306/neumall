@@ -1,0 +1,91 @@
+services:
+  # MySQL 数据库
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: "123"     # 和SpringBoot所有配置保持一致
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    networks:
+      - hm-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-p123"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 30s
+
+  # Nacos 配置中心
+  nacos:
+    image: nacos/nacos-server:v2.1.0-slim
+    container_name: nacos
+    restart: always
+    env_file:
+      - ./nacos/custom.env       # 里面已经改成 MYSQL_SERVICE_HOST=mysql 了
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849"
+    networks:
+      - hm-net
+
+  # Seata 分布式事务 TC 服务
+  seata:
+    image: seataio/seata-server:1.5.2
+    container_name: seata
+    restart: always
+    environment:
+      # 对外暴露给微服务访问的 IP。
+      # 可以用 SEATA_IP 环境变量覆盖；不覆盖时用默认值 192.168.18.128
+      SEATA_IP: ${SEATA_IP:-192.168.203.131}
+    volumes:
+      - ./seata:/seata-server/resources
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8099:8099"
+      - "7099:7099"
+    networks:
+      - hm-net
+
+  # RabbitMQ 消息队列
+  rabbitmq:
+    image: rabbitmq:3.8-management
+    container_name: mq
+    hostname: mq
+    restart: always
+    environment:
+      # 和准备放到 Nacos shared-mq.yaml 中的默认值保持一致
+      RABBITMQ_DEFAULT_USER: "hmall"
+      RABBITMQ_DEFAULT_PASS: "123"
+    ports:
+      - "15672:15672"   # 管理控制台
+      - "5672:5672"     # 应用连接端口
+    volumes:
+      - mq-plugins:/plugins
+    networks:
+      - hm-net
+
+# 统一 docker 网络，名称就叫 hm-net，和文档一致
+networks:
+  hm-net:
+    name: hm-net
+    driver: bridge
+
+# RabbitMQ 插件卷
+volumes:
+  mq-plugins:
