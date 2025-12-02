@@ -24,6 +24,7 @@ import java.util.List;
 @Service
 public class ItemServiceImpl extends ServiceImpl<ItemMapper, Item> implements IItemService {
 
+
     @Override
     @Transactional
     public void deductStock(List<OrderDetailDTO> items) {

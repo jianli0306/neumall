@@ -194,12 +194,13 @@
           })
           this.params.details = details;
           axios.post("/orders", this.params)
-            .then(orderId => {
+            .then(response => {
+              // 从响应中提取 orderId
+              const orderId = response;
               if (!orderId) {
                 alert("下单失败，服务没有返回订单ID！")
                 return;
               }
-              
               // 跳转到支付页面
               location.href = "/pay.html?id=" + orderId
             })

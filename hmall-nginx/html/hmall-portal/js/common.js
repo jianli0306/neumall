@@ -12,9 +12,10 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   response => response.data,
   err => {
-    if (err.response.status === 401) {
+    // 检查 err.response 是否存在
+    if (err.response && err.response.status === 401) {
       // 认证失败，需要重新登录
-	  sessionStorage.removeItem("user-info")
+      sessionStorage.removeItem("user-info")
       sessionStorage.removeItem("token")
       location.href = "/login.html";
     }

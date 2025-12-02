@@ -5,47 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13935132-9763-4aaa-b0e3-00f57884aa19" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/config/CartProPerties.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/config/CartProPerties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/service/impl/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/bootstrap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hm-gateway/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/hm-gateway/src/main/resources/bootstrap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hm-service/src/main/java/com/hmall/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hm-service/src/main/java/com/hmall/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hm-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/hm-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/js/foot.js" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/js/foot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/js/top.js" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/js/top.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/js/common.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/order-confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/order-confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/html/hmall-portal/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/nginx.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/item-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/item-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/resources/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/item-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/item-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/resources/bootstrap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pay-service/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pay-service/src/main/resources/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pay-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/bootstrap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/hmall/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/hmall/user/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/item-service/src/main/java/com/hmall/item/service/impl/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/java/com/hmall/item/service/impl/ItemServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +70,7 @@
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2850575",
     "run.configurations.included.in.services": "true",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
@@ -163,6 +129,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.CartApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.ItemApplication" />
+      <item itemvalue="Spring Boot.PayApplication" />
+      <item itemvalue="Spring Boot.TradeApplication" />
+      <item itemvalue="Spring Boot.UserApplication" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -181,11 +155,31 @@
       <option name="presentableId" value="Default" />
       <updated>1715580436140</updated>
       <workItem from="1715580445450" duration="269000" />
-      <workItem from="1764559341569" duration="16933000" />
+      <workItem from="1764559341569" duration="25114000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hm-api/src/main/java/com/hmall/api/client/ItemClient.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/service/ICartService.java</url>
+          <line>22</line>
+          <properties class="com.hmall.cart.service.ICartService" method="queryMyCarts">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
