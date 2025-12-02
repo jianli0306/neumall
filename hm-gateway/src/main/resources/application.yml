@@ -12,3 +12,8 @@ hm:
       - /users/login
       - /items/**
       - /hi
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway

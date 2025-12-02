@@ -1,0 +1,12 @@
+server:
+  port: 8089
+hm:
+  swagger:
+    title: "东大商场分布式id服务接口文档"
+    package: com.hmall.id.controller
+spring:
+  redis:
+    host: "192.168.203.131" # 虚拟机IP
+    port: 6379
+    # password: 123
+    database: 0

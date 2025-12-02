@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: id-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: "192.168.203.131:8848"
+      config:
+        file-extension: yaml
+        shared-configs:
+          - data-id: shared-log.yaml
+          - data-id: shared-swagger.yaml

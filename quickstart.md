@@ -34,7 +34,6 @@
 
 ### 快速启动docker中的所有服务，包括mysql、nacos、seata、mq
 - `cd /root/hmall-docker`
-- `export SEATA_IP=$(hostname -I | awk '{print $1}')`
 - `docker compose up -d`
 
 启动完毕后，查看docker compose ps确认所有服务都启动成功

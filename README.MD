@@ -246,6 +246,15 @@ hm-gateway:routers-DynamicRouteLoader可以监听nacos中的这个配置
         }],
         "filters": [],
         "uri": "lb://pay-service"
+    },
+    {
+        "id": "id",
+        "predicates": [{
+            "name": "Path",
+            "args": {"_genkey_0":"/ids/**"}
+        }],
+        "filters": [],
+        "uri": "lb://id-service"
     }
 ]
 ```
