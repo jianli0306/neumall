@@ -72,6 +72,7 @@ start nginx.exe
 - UserApplication
 - TradeApplication
 - PayApplication
+- IdApplication
 #### nacos中加入共享配置
 见README.md中的nacos做配置中心 共享配置部分，共6个配置文件
 
