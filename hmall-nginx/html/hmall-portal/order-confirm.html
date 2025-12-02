@@ -193,7 +193,7 @@
             details.push({itemId, num})
           })
           this.params.details = details;
-          axios.post("/orders", this.params)
+          axios.post("/orders", this.params, { timeout: 100000 })
             .then(response => {
               // 从响应中提取 orderId
               const orderId = response;
