@@ -26,7 +26,7 @@ SpringCloudGateway，也就是网关。
 - 重启虚拟机的时候，docker（docker不自动启动的搜一下怎么在虚拟机开启的时候自启docker）会自动开启nacos容器，但是不会自动重启mysql容器：
   - `docker restart mysql`重启mysql容器
   - `docker restart nacos`重启nacos容器
-  - 访问http://192.168.203.131:8848/nacos/正常后，`docker restart seata`重启seata容器，否则seata启动不起来
+  - 访问http://192.168.253.128:8848/nacos/正常后，`docker restart seata`重启seata容器，否则seata启动不起来
 - cmd方式启动nginx
 - idea启动各个服务，结果如图：![img.png](img.png)
 ***
@@ -106,10 +106,10 @@ docker run -d \
 --restart=always \
 nacos/nacos-server:v2.1.0-slim
 ```
-5. 启动完成后，访问下面地址：http://192.168.203.131:8848/nacos/，注意将192.168.203.131替换为你自己的虚拟机IP地址。
+5. 启动完成后，访问下面地址：http://192.168.253.128:8848/nacos/，注意将192.168.253.128替换为你自己的虚拟机IP地址。
 6. 首次访问会跳转到登录页，账号密码都是nacos
 
-7. 在idea项目中双击shift全局搜索server-addr，将nacos的server-addr改为`192.168.203.131:8848`
+7. 在idea项目中双击shift全局搜索server-addr，将nacos的server-addr改为`192.168.253.128:8848`
 
 ## yaml文件的mysql的db配置
 **注意除了hm-api、hm-common、hm-gateway、hm-service**
@@ -123,7 +123,7 @@ item-service/src/main/resources/application.yaml
 pay-service/src/main/resources/application-local.yaml
 pay-service/src/main/resources/application-dev.yaml
 
-host:192.168.203.131
+host:192.168.253.128
 password:123
 注意pay-sevice的application.yaml 中数据库配置hm-pay库
 注意user—service的jwt配置，和下面网关jwt配置一样
@@ -144,7 +144,7 @@ hm:
 ```
 
 ## nacos做配置中心 共享配置
-以下配置都是在nacos控制台：http://192.168.203.131:8848/nacos/
+以下配置都是在nacos控制台：http://192.168.253.128:8848/nacos/
 账号密码都是`nacos`
 左边点击配置管理-配置列表，点击右边加号
 ### jdbc配置
@@ -153,7 +153,7 @@ hm:
 ```yaml
 spring:
   datasource:
-    url: jdbc:mysql://${hm.db.host:192.168.203.131}:${hm.db.port:3306}/${hm.db.database}?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://${hm.db.host:192.168.253.128}:${hm.db.port:3306}/${hm.db.database}?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${hm.db.un:root}
     password: ${hm.db.pw:123}
@@ -293,7 +293,7 @@ java -Dserver.port=8090 -Dcsp.sentinel.dashboard.server=localhost:8090 -Dproject
 docker run --name seata \
 -p 8099:8099 \
 -p 7099:7099 \
--e SEATA_IP=192.168.203.131 \
+-e SEATA_IP=192.168.253.128 \
 -v ./seata:/seata-server/resources \
 --privileged=true \
 --network hm-net \
@@ -306,7 +306,7 @@ seata:
   registry: # TC服务注册中心的配置，微服务根据这些信息去注册中心获取tc服务地址
     type: nacos # 注册中心类型 nacos
     nacos:
-      server-addr: 192.168.203.131:8848 # nacos地址
+      server-addr: 192.168.253.128:8848 # nacos地址
       namespace: "" # namespace，默认为空
       group: DEFAULT_GROUP # 分组，默认是DEFAULT_GROUP
       application: seata-server # seata服务名称
@@ -333,13 +333,13 @@ docker run \
  -d \
  rabbitmq:3.8-management
 ```
-2. 访问 http://192.168.203.131:15672即可查看RabbitMQ控制台，账号hmall，密码123
+2. 访问 http://192.168.253.128:15672即可查看RabbitMQ控制台，账号hmall，密码123
 3. 创建一个虚拟主机/hmall
 4. 改造配置 抽取到nacos中的共享配置:shared-mq.yaml
 ```yaml
 spring:
   rabbitmq:
-    host: ${hm.mq.host:192.168.203.131} # 主机名
+    host: ${hm.mq.host:192.168.253.128} # 主机名
     port: ${hm.mq.port:5672} # 端口
     virtual-host: ${hm.mq.vhost:/hmall} # 虚拟主机
     username: ${hm.mq.un:hmall} # 用户名

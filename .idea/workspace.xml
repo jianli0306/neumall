@@ -5,22 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13935132-9763-4aaa-b0e3-00f57884aa19" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application-local.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/bootstrap.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hm-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hm-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hm-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hm-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hm-gateway/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/hm-gateway/src/main/resources/bootstrap.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/access.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/nginx.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc的nacos共享配置.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/id-service/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/id-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/id-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/item-service/src/main/java/com/hmall/item/config/RedisConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/java/com/hmall/item/config/RedisConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/item-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/item-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/resources/application-local.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/item-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/item-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pay-service/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pay-service/src/main/resources/application-local.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pay-service/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quickstart.md" beforeDir="false" afterPath="$PROJECT_DIR$/quickstart.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/config/RedisConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/config/RedisConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application-local.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application-local.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,24 +40,42 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/whq" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="whq" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "qduHeatLow"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;qduHeatLow&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/qduHeatLow/hmall.git",
-    "accountId": "d6a88e13-cc30-4891-ae1f-ebe954ed65db"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/qduHeatLow/hmall.git&quot;,
+    &quot;accountId&quot;: &quot;d6a88e13-cc30-4891-ae1f-ebe954ed65db&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -70,7 +100,7 @@
     "Spring Boot.PayApplication.executor": "Run",
     "Spring Boot.TradeApplication.executor": "Run",
     "Spring Boot.UserApplication.executor": "Run",
-    "git-widget-placeholder": "whq",
+    "git-widget-placeholder": "yjl",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/gitRepository/hmall",
     "node.js.detected.package.eslint": "true",
@@ -111,13 +141,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HMallApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="hm-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hmall.HMallApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="IdApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="id-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hmall.id.IdApplication" />
@@ -154,7 +177,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.HMallApplication" />
       <item itemvalue="Spring Boot.IdApplication" />
       <item itemvalue="Spring Boot.CartApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
@@ -188,6 +210,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -199,7 +232,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/service/ICartService.java</url>
           <line>22</line>
-          <properties class="com.hmall.cart.service.ICartService" method="queryMyCarts">
+          <properties class="com.hmall.cart.service.ICartService">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

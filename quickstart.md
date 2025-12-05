@@ -68,7 +68,7 @@ start nginx.exe
 - 重新访问http://localhost:18080/
 
 #### 后端部分
-在代码里全局查找`192.168.203.131`替换为自己的虚拟机ip
+在代码里全局查找`192.168.253.128`替换为自己的虚拟机ip
 注意jdk版本，jdk11可以运行。（在项目结构-项目中选择sdk：corretto-11）
 一次启动所有微服务：
 - GatewayApplication
@@ -82,7 +82,7 @@ start nginx.exe
 见README.md中的nacos做配置中心 共享配置部分，共6个配置文件
 
 #### rabbitMQ验证
-访问 http://192.168.203.131:15672即可查看RabbitMQ控制台，账号hmall，密码123
+访问 http://192.168.253.128:15672即可查看RabbitMQ控制台，账号hmall，密码123
 admin-右侧Virtual Host
 下面创建一个虚拟主机/hmall
 
@@ -102,7 +102,7 @@ admin-右侧Virtual Host
 
 ##### Windows 上做连接数据库验证和RabbitMQ验证：
 Navicat 连接：虚拟机IP:3306，root / 123
-浏览器访问： `http://192.168.203.131:8848/nacos（nacos/nacos）`
+浏览器访问： `http://192.168.253.128:8848/nacos（nacos/nacos）`
 MQ验证：
 浏览器访问：`http://虚拟机IP:15672（hmall/123）`
 

@@ -6,7 +6,7 @@ hm:
     package: com.hmall.id.controller
 spring:
   redis:
-    host: "192.168.203.131" # 虚拟机IP
+    host: "192.168.253.128" # 虚拟机IP
     port: 6379
     # password: 123
     database: 0
