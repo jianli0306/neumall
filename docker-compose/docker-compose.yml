@@ -25,11 +25,12 @@ services:
 
   # Nacos 配置中心
   nacos:
-    image: nacos/nacos-server:v2.1.0-slim
+    image: nacos/nacos-server:v2.1.0
     container_name: nacos
     restart: always
-    env_file:
-      - ./nacos/custom.env       # 里面已经改成 MYSQL_SERVICE_HOST=mysql 了
+    environment:
+      - MODE=standalone
+      - PREFER_HOST_MODE=hostname
     depends_on:
       mysql:
         condition: service_healthy
@@ -37,8 +38,11 @@ services:
       - "8848:8848"
       - "9848:9848"
       - "9849:9849"
+    volumes:
+      - ./nacos/application.properties:/home/nacos/conf/application.properties
     networks:
       - hm-net
+
 
   # Seata 分布式事务 TC 服务
   seata:

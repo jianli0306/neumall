@@ -41,6 +41,11 @@
 如果还是报错，就重启docker `sudo systemctl restart docker`
 然后启动所有服务：`docker compose up -d`
 
+#### 附录：查看docker中nacos详细日志
+`docker exec -it nacos bash`
+`cd /home/nacos/logs`
+`ls`
+
 ### Windows 上按原文档启动 hmall-nginx和各个微服务
 #### 前端Nginx部署
 1. 将本文件夹中的hmall-nginx放到一个不含中文的文件夹，比如我放到D盘
@@ -82,7 +87,7 @@ admin-右侧Virtual Host
 下面创建一个虚拟主机/hmall
 
 在queues-下面add一个队列，名字为`trade.delay.order.queue`
-再新建一个队列，名字为`trade.pay.success.queue`
+再新建一个队列，名字为`trade.pay.success.queue`和`trade.seckill.queue`
 
 此时还需要安装延迟插件：
 执行`docker volume ls`查看带有mq的挂载卷（也就是docker的mq具体映射到了哪个虚拟机的文件夹）

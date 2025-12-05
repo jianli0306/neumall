@@ -233,7 +233,7 @@ hm-gateway:routers-DynamicRouteLoader可以监听nacos中的这个配置
         "id": "trade",
         "predicates": [{
             "name": "Path",
-            "args": {"_genkey_0":"/orders/**"}
+            "args": {"_genkey_0":"/orders/**", "_genkey_1":"/seckillOrders/**"}
         }],
         "filters": [],
         "uri": "lb://trade-service"

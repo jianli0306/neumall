@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+  <title>东大集市 - 秒杀</title>
+  <link rel="stylesheet" type="text/css" href="css/webbase2.css"/>
+  <link rel="stylesheet" type="text/css" href="css/pages-index.css"/>
+  <style type="text/css">
+    .seckill-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .seckill-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #c81623;
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 10px 0;
+      border-bottom: 2px solid #c81623;
+    }
+    .seckill-item {
+      display: flex;
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .seckill-item-left {
+      width: 40%;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f5f5f5;
+    }
+    .seckill-item-image {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
+    .seckill-item-right {
+      width: 60%;
+      padding: 30px;
+    }
+    .seckill-item-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .seckill-item-info {
+      margin-bottom: 20px;
+      color: #666;
+      line-height: 1.6;
+    }
+    .seckill-price-section {
+      margin-bottom: 20px;
+    }
+    .seckill-price {
+      font-size: 32px;
+      font-weight: bold;
+      color: #c81623;
+      margin-right: 10px;
+    }
+    .seckill-original-price {
+      font-size: 18px;
+      color: #999;
+      text-decoration: line-through;
+    }
+    .seckill-countdown {
+      margin-bottom: 20px;
+    }
+    .countdown-label {
+      font-size: 16px;
+      color: #333;
+      margin-right: 10px;
+    }
+    .countdown-time {
+      font-size: 20px;
+      font-weight: bold;
+      color: #c81623;
+    }
+    .countdown-unit {
+      font-size: 14px;
+      color: #666;
+      margin: 0 5px;
+    }
+    .seckill-stock {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+    .stock-number {
+      color: #c81623;
+      font-weight: bold;
+    }
+    .seckill-actions {
+      display: flex;
+      gap: 15px;
+    }
+    .btn-seckill {
+      background-color: #c81623;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-seckill:hover {
+      background-color: #a4121f;
+      transform: translateY(-2px);
+    }
+    .btn-disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .btn-disabled:hover {
+      background-color: #ccc;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body>
+<div id="seckillApp">
+  <!-- 头部栏位 -->
+  <div id="nav-bottom">
+    <top></top>
+    <div class='header' id='headApp'>
+      <div class='py-container'>
+        <div class='yui3-g Logo'>
+          <div class='yui3-u Left logoArea'>
+            <a href="/">
+              <div class="logo">
+                <img src="./img/logo.png" alt="1"/>
+              </div>
+            </a>
+          </div>
+          <div class='yui3-u Center searchArea'>
+            <div class='search' style="font-weight:bold">
+              <div action='' class='sui-form form-inline'>
+                <!--searchAutoComplete-->
+                <div class='input-append'>
+                  <input style="font-weight:bold" type='text' id='autocomplete' v-model='key' @keyup="handleKey($event)"
+                         @click.stop="" autocomplete="off" class='input-error input-xxlarge'
+                         @focus="showOption=true&&options.length>0" placeholder="搜索商品"/>
+                  <button @click='search' class='sui-btn btn-xlarge btn-danger' type='button'>搜索</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='yui3-u Right shopArea'>
+            <div class='fr shopcar'>
+              <div class='show-shopcar' id='shopcar'>
+                <span class='car'></span>
+                <a class='sui-btn btn-default btn-xlarge' href='/cart.html'>
+                  <span>我的购物车</span>
+                  <i class='shopnum'>{{carts.length}}</i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='yui3-g '>
+          <div class='yui3-u Left all-sort'>
+            <h4></h4>
+          </div>
+          <div class='yui3-u Center navArea' style="z-index: 50">
+            <ul class='nav'>
+              <li class='f-item'>服装城</li>
+              <li class='f-item'>美妆馆</li>
+              <li class='f-item'>东大超市</li>
+              <li class='f-item'>全球购</li>
+              <li class='f-item'>闪购</li>
+              <li class='f-item'>团购</li>
+              <li class='f-item'>有趣</li>
+              <li class='f-item'><a href='/seckill.html' target='_blank' style="color: #c81623;">秒杀</a></li>
+            </ul>
+          </div>
+          <div class='yui3-u Right'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 秒杀商品区域 -->
+  <div class="seckill-container">
+    <h2 class="seckill-title">限时秒杀</h2>
+    
+    <div class="seckill-item">
+      <div class="seckill-item-left">
+        <img src="img/quan.png" alt="无门槛优惠券" class="seckill-item-image">
+      </div>
+      <div class="seckill-item-right">
+        <h3 class="seckill-item-name">{{seckillItem.name}}</h3>
+        <div class="seckill-item-info">
+          <p>这是一张无门槛优惠券，可在所有商品上使用，享受立减优惠！</p>
+        </div>
+        <div class="seckill-price-section">
+          <span class="seckill-price">¥{{seckillItem.price}}</span>
+        </div>
+        <div class="seckill-countdown">
+          <span class="countdown-label">距离结束还有：</span>
+          <span class="countdown-time">{{hours}}</span>
+          <span class="countdown-unit">时</span>
+          <span class="countdown-time">{{minutes}}</span>
+          <span class="countdown-unit">分</span>
+          <span class="countdown-time">{{seconds}}</span>
+          <span class="countdown-unit">秒</span>
+        </div>
+        <div class="seckill-stock">
+          库存数量：<span class="stock-number">{{seckillItem.stock}}</span> 张
+        </div>
+        <div class="seckill-actions">
+          <button @click="seckill" :class="['btn-seckill', { 'btn-disabled': !canSeckill }]">
+            {{canSeckill ? '立即秒杀' : '已结束'}}
+          </button>
+          <button class="sui-btn btn-xlarge btn-default" @click="goHome">返回首页</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <foot></foot>
+</div>
+
+<!--页面顶部，由js动态加载-->
+<script src="./js/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/top.js"></script>
+<script src="./js/copyright.js"></script>
+<script src="./js/foot.js"></script>
+<script type="text/javascript">
+  var seckillVm = new Vue({
+    el: "#seckillApp",
+    data() {
+      return {
+        util,
+        key: '',
+        showOption: false,
+        options: [],
+        index: -1,
+        carts: [],
+        seckillItem: {
+          id: 1001,
+          name: "20元无门槛优惠券",
+          price: 20.00,
+          stock: 100,
+          status: 1
+        },
+        endTime: new Date(new Date().setHours(23, 59, 59, 999)).getTime(), // 今天结束时间
+        hours: '00',
+        minutes: '00',
+        seconds: '00',
+        canSeckill: true
+      }
+    },
+    created() {
+      util.store.set("return-url", location.href);
+      if(this.util.isLogin()){
+        axios.get("/carts")
+          .then(resp => this.carts = resp)
+          .catch(err => {
+            console.log(err);
+            this.carts = []
+          })
+      }
+      // 获取当天的优惠券数据
+      this.getSeckillItem();
+      this.startCountdown();
+    },
+    methods: {
+      handleKey(e) {
+        if (e.keyCode === 13) {
+          this.search();
+        }
+      },
+      search() {
+        if (this.key) {
+          window.location = '/search.html?key=' + this.key;
+        } else {
+          window.location = '/search.html';
+        }
+      },
+      startCountdown() {
+        const timer = setInterval(() => {
+          const now = Date.now();
+          const remaining = this.endTime - now;
+          
+          if (remaining <= 0) {
+            clearInterval(timer);
+            this.hours = '00';
+            this.minutes = '00';
+            this.seconds = '00';
+            this.canSeckill = false;
+            return;
+          }
+          
+          // 计算剩余时间
+          const h = Math.floor(remaining / (1000 * 60 * 60));
+          const m = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+          const s = Math.floor((remaining % (1000 * 60)) / 1000);
+          
+          // 格式化时间
+          this.hours = h.toString().padStart(2, '0');
+          this.minutes = m.toString().padStart(2, '0');
+          this.seconds = s.toString().padStart(2, '0');
+        }, 1000);
+      },
+      seckill() {
+        if (!this.canSeckill) return;
+        
+        if (!this.util.isLogin()) {
+          util.store.set("return-url", location.href);
+          window.location.href = "/login.html";
+          return;
+        }
+        
+        //实际项目中应该调用后端API
+        // 将seckillId作为URL路径参数发送，匹配后端@PathVariable注解
+        axios.post(`/seckillOrders/${this.seckillItem.id}`)
+          .then(resp => {
+            alert("秒杀成功！优惠券已放入您的账户");
+          })
+          .catch(err => {
+            alert("秒杀失败：" + (err.response?.data?.msg || "网络错误"));
+          });
+      },
+      getSeckillItem() {
+        // 从后端获取当天的优惠券数据
+        axios.get('/seckill/today')
+          .then(resp => {
+            // 后端返回的是数组，取第一个元素
+            this.seckillItem = resp.data && resp.data.length > 0 ? resp.data[0] : this.seckillItem;
+          })
+          .catch(err => {
+            console.error('获取优惠券数据失败:', err);
+          });
+      },
+      goHome() {
+        window.location.href = "/";
+      }
+    }
+  });
+</script>
+</body>
+
+</html>
