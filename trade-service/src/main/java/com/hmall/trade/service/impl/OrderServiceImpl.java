@@ -13,6 +13,7 @@ import com.hmall.trade.constants.MQConstants;
 import com.hmall.trade.domain.dto.OrderFormDTO;
 import com.hmall.trade.domain.po.Order;
 import com.hmall.trade.domain.po.OrderDetail;
+import com.hmall.trade.domain.vo.OrderDetailVO;
 import com.hmall.trade.mapper.OrderMapper;
 import com.hmall.trade.service.IOrderDetailService;
 import com.hmall.trade.service.IOrderService;
@@ -148,4 +149,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         // 修改支付状态为已取消
         // todo
     }
+
+
 }

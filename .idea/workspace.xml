@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13935132-9763-4aaa-b0e3-00f57884aa19" name="Changes" comment="">
+    <list default="true" id="13935132-9763-4aaa-b0e3-00f57884aa19" name="Changes" comment="fix:ip">
+      <change afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/domain/vo/OrderDetailVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application-dev.yaml" afterDir="false" />
@@ -13,6 +14,7 @@
       <change beforePath="$PROJECT_DIR$/docker-compose/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hm-gateway/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/hm-gateway/src/main/resources/bootstrap.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/access.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmall-nginx/logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/hmall-nginx/logs/nginx.pid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/id-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/id-service/src/main/resources/application-dev.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/id-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/id-service/src/main/resources/application.yaml" afterDir="false" />
@@ -26,6 +28,10 @@
       <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pay-service/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quickstart.md" beforeDir="false" afterPath="$PROJECT_DIR$/quickstart.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/config/RedisConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/config/RedisConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/service/IOrderDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/service/IOrderDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/service/IOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/service/impl/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application-dev.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application-local.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application.yaml" afterDir="false" />
@@ -38,6 +44,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <favorite-branches>
@@ -68,8 +81,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/qduHeatLow/hmall.git&quot;,
-    &quot;accountId&quot;: &quot;d6a88e13-cc30-4891-ae1f-ebe954ed65db&quot;
+    &quot;url&quot;: &quot;https://github.com/jianli0306/neumall.git&quot;,
+    &quot;accountId&quot;: &quot;7c9ab140-9656-4274-a00c-11210f4e3ad7&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -85,37 +98,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.CartApplication.executor": "Run",
-    "Spring Boot.GatewayApplication.executor": "Run",
-    "Spring Boot.IdApplication.executor": "Run",
-    "Spring Boot.ItemApplication.executor": "Run",
-    "Spring Boot.PayApplication.executor": "Run",
-    "Spring Boot.TradeApplication.executor": "Run",
-    "Spring Boot.UserApplication.executor": "Run",
-    "git-widget-placeholder": "yjl",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/gitRepository/hmall",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2850575",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;找到数据库连接形参&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CartApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.IdApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ItemApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.PayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TradeApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;yjl&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/gitRepository/hmall&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2850575&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -126,7 +142,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CartApplication">
+  <component name="RunManager" selected="Spring Boot.TradeApplication">
     <configuration name="CartApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="cart-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hmall.cart.CartApplication" />
@@ -162,9 +178,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TradeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="TradeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="trade-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hmall.trade.TradeApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hmall.trade.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -182,15 +204,20 @@
       <item itemvalue="Spring Boot.GatewayApplication" />
       <item itemvalue="Spring Boot.ItemApplication" />
       <item itemvalue="Spring Boot.PayApplication" />
-      <item itemvalue="Spring Boot.TradeApplication" />
       <item itemvalue="Spring Boot.UserApplication" />
+      <item itemvalue="Spring Boot.TradeApplication" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.TradeApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
       </set>
     </attachedChunks>
   </component>
@@ -204,7 +231,22 @@
       <updated>1715580436140</updated>
       <workItem from="1715580445450" duration="269000" />
       <workItem from="1764559341569" duration="41370000" />
+      <workItem from="1764938883777" duration="1395000" />
+      <workItem from="1765087719519" duration="10101000" />
+      <workItem from="1765101865046" duration="2324000" />
+      <workItem from="1765108274785" duration="7208000" />
+      <workItem from="1765117341979" duration="579000" />
+      <workItem from="1765118270894" duration="3400000" />
     </task>
+    <task id="LOCAL-00001" summary="fix:ip">
+      <option name="closed" value="true" />
+      <created>1764939264817</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764939264817</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,11 +257,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="yjl" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix:ip" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix:ip" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

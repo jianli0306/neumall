@@ -3,6 +3,8 @@ package com.hmall.trade.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.hmall.trade.domain.dto.OrderFormDTO;
 import com.hmall.trade.domain.po.Order;
+import com.hmall.trade.domain.po.OrderDetail;
+import com.hmall.trade.domain.vo.OrderDetailVO;
 
 
 /**
@@ -20,4 +22,6 @@ public interface IOrderService extends IService<Order> {
     void markOrderPaySuccess(Long orderId);
 
     void cancelOrder(Long orderId);
+
+
 }

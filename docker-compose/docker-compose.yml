@@ -52,7 +52,7 @@ services:
     environment:
       # 对外暴露给微服务访问的 IP。
       # 可以用 SEATA_IP 环境变量覆盖；不覆盖时用默认值 192.168.18.128
-      SEATA_IP: ${SEATA_IP:-192.168.253.128}
+      SEATA_IP: ${SEATA_IP:-192.168.253.129}
     volumes:
       - ./seata:/seata-server/resources
     depends_on:

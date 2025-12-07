@@ -11,7 +11,7 @@ public class RedisConfiguration {
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
         LettuceConnectionFactory factory = new LettuceConnectionFactory();
-        factory.setHostName("192.168.253.128");
+        factory.setHostName("192.168.253.129");
         factory.setPort(6379);
         factory.setDatabase(0);
         return factory;
