@@ -17,6 +17,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
@@ -26,6 +28,9 @@ public class ElasticDocumentTest {
     private RestHighLevelClient client;
     @Autowired
     private IItemService itemService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @BeforeEach
     void setUp() {
@@ -54,5 +59,12 @@ public class ElasticDocumentTest {
         request.source(doc, XContentType.JSON);
         // 3.发送请求
         client.index(request, RequestOptions.DEFAULT);
+    }
+    @Test
+    void testRedis(){
+        redisTemplate.opsForValue().set("itemId","1");
+        String id= redisTemplate.opsForValue().get("itemId").toString();
+        System.out.println(id);
+
     }
 }

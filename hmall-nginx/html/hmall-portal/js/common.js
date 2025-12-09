@@ -1,6 +1,6 @@
 // 设置后台服务地址
 axios.defaults.baseURL = "/api";
-axios.defaults.timeout = 2000;
+axios.defaults.timeout = 20000;
 // request拦截器
 axios.interceptors.request.use(
   config => {

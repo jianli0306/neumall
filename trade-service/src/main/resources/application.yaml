@@ -8,14 +8,14 @@ hm:
     package: com.hmall.trade.controller
 spring:
   rabbitmq:
-    host: "192.168.253.129" # 虚拟机IP
+    host: "192.168.253.130" # 虚拟机IP
     port: 5672 # 端口
     virtual-host: "/hmall" # 虚拟主机
     username: "hmall" # 用户名
     password: "123" # 密码
   data:
     redis:
-      host: "192.168.253.129" # 虚拟机IP
+      host: "192.168.253.130" # 虚拟机IP
       port: 6379
       # password: 123
       database: 0

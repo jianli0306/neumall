@@ -29,6 +29,10 @@ public class ItemClientFallbackFactory implements FallbackFactory<ItemClient> {
                 // 库存扣减业务需要触发事务回滚，查询失败，抛出异常
                 throw new RuntimeException(cause);
             }
+            @Override
+            public void deductSecKillStock(Long seckillId) {
+                throw new RuntimeException(cause);
+            }
         };
     }
 }

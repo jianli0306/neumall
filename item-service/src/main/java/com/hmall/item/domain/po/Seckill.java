@@ -20,7 +20,7 @@ public class Seckill implements Serializable {
     /**
      * 秒杀商品id
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.INPUT)
     private Long id;
 
     /**

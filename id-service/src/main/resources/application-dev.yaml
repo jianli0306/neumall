@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: "192.168.253.129" # 虚拟机IP
+    host: "192.168.253.130" # 虚拟机IP
     port: 6379
     # password: 123
     database: 0

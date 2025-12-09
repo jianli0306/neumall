@@ -1,5 +1,6 @@
 package com.hmall.api.client;
 
+import com.hmall.common.domain.R;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,6 @@ public interface IdClient {
     
     @ApiOperation("批量生成分布式自增ID")
     @GetMapping("/ids/batch")
-    long[] generateIds(@RequestParam("businessType") String businessType, 
+    Long[] generateIds(@RequestParam("businessType") String businessType,
                       @RequestParam("count") int count);
 }

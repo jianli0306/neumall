@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,11 +35,11 @@ public class OrderDetailVO {
     @ApiModelProperty("评价时间")
     private LocalDateTime commentTime;
     @ApiModelProperty("商品id")
-    private Long Itemid;
+    private List<Long> Itemids;
     @ApiModelProperty("SKU名称")
-    private String name;
+    private List<String> names;
     @ApiModelProperty("价格（分）")
-    private Integer price;
+    private List<Integer> prices;
     @ApiModelProperty("商品图片")
-    private String image;
+    private List<String> images;
 }

@@ -23,9 +23,9 @@ public class IdController {
     @ApiOperation("生成单个分布式自增ID")
     @ApiImplicitParam(name = "businessType", value = "业务类型", required = true, example = "order")
     @GetMapping
-    public R<Long> generateId(@RequestParam("businessType") String businessType) {
+    public Long generateId(@RequestParam("businessType") String businessType) {
         long id = idGeneratorService.generateId(businessType);
-        return R.ok(id);
+        return id;
     }
     
     @ApiOperation("批量生成分布式自增ID")
@@ -34,17 +34,17 @@ public class IdController {
             @ApiImplicitParam(name = "count", value = "生成数量，1-1000", required = true, example = "10")
     })
     @GetMapping("/batch")
-    public R<long[]> generateIds(@RequestParam("businessType") String businessType, 
+    public long[] generateIds(@RequestParam("businessType") String businessType,
                                 @RequestParam("count") int count) {
         long[] ids = idGeneratorService.generateIds(businessType, count);
-        return R.ok(ids);
+        return ids;
     }
     
     @ApiOperation("生成单个分布式自增ID（POST方式）")
     @ApiImplicitParam(name = "businessType", value = "业务类型", required = true, example = "order")
     @PostMapping
-    public R<Long> generateIdPost(@RequestParam("businessType") String businessType) {
+    public Long generateIdPost(@RequestParam("businessType") String businessType) {
         long id = idGeneratorService.generateId(businessType);
-        return R.ok(id);
+        return id;
     }
 }

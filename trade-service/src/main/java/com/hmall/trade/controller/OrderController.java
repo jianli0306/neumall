@@ -18,6 +18,8 @@ import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Api(tags = "订单管理接口")
 @RestController
 @RequestMapping("/orders")
@@ -30,14 +32,13 @@ public class OrderController {
     @GetMapping("{id}")
     public OrderDetailVO queryOrderById(@Param ("订单id")@PathVariable("id") Long orderId) {
         Order order = orderService.getById(orderId);
-        // 使用Lambda方式查询订单详情
-        OrderDetail orderDetail = orderDetailService.getOne(
+        // 查询订单详情列表（可能多条）
+        List<OrderDetail> orderDetails = orderDetailService.list(
                 Wrappers.<OrderDetail>lambdaQuery()
                         .eq(OrderDetail::getOrderId, orderId)
         );
         OrderDetailVO orderDetailVO = new OrderDetailVO();
         BeanUtils.copyProperties(order,orderDetailVO);
-        BeanUtils.copyProperties(orderDetail,orderDetailVO);
         return orderDetailVO;
     }
 
