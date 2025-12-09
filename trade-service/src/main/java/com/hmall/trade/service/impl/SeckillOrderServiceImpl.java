@@ -10,10 +10,14 @@ import com.hmall.trade.mapper.SeckillOrderMapper;
 import com.hmall.trade.service.ISeckillOrderService;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +26,7 @@ public class SeckillOrderServiceImpl extends ServiceImpl<SeckillOrderMapper,Seck
     private final ItemClient itemClient;
     private final IdClient idClient;
     private final SeckillLuaConfig seckillLuaConfig;
+    private final RabbitTemplate rabbitTemplate;
     @Override
     @GlobalTransactional
     public String createSeckillOrder(Long seckillId) {
@@ -45,13 +50,13 @@ public class SeckillOrderServiceImpl extends ServiceImpl<SeckillOrderMapper,Seck
         if (luaResult ==0l) {
             return "用户已参与过秒杀";
         }
-        SeckillOrder seckillOrder = new SeckillOrder();
         Long seckillOrderId = idClient.generateId("seckillOrderId");
-        seckillOrder.setId(seckillOrderId);
-        seckillOrder.setUserId(user);
-        seckillOrder.setSeckillId(seckillId);
-        save(seckillOrder);
-        itemClient.deductSecKillStock(seckillId);
+        // 使用Map发送
+        Map<String, Object> messageMap = new HashMap<>();
+        messageMap.put("id", seckillOrderId);
+        messageMap.put("userId", user);
+        messageMap.put("seckillId", seckillId);
+        rabbitTemplate.convertAndSend("seckill.direct", "seckill.success",messageMap);
         return String.valueOf(seckillOrderId);
 
     }
