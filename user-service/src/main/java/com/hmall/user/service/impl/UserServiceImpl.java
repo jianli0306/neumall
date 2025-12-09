@@ -20,6 +20,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.time.Duration;
+
 /**
  * <p>
  * 用户表 服务实现类
@@ -53,6 +55,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         // 4.校验密码
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new BadRequestException("用户名或密码错误");
+        }
+        if(username.equals("jack")){
+            jwtProperties.setTokenTTL(Duration.ofDays(7));
         }
         // 5.生成TOKEN
         String token = jwtTool.createToken(user.getId(), jwtProperties.getTokenTTL());

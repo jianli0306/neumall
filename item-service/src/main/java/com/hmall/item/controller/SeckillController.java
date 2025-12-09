@@ -13,8 +13,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SeckillController {
     private final ISeckillService seckillService;
+    @ApiOperation("添加秒杀优惠券")
     @PostMapping
-    public Long addSeck(@RequestBody SeckillDTO seckillDTO) {
+    public Long addSeckill(@RequestBody SeckillDTO seckillDTO) {
         return seckillService.addTicket(seckillDTO);
     }
 
