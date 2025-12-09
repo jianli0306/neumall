@@ -32,14 +32,7 @@ public class OrderController {
     @GetMapping("{id}")
     public OrderDetailVO queryOrderById(@Param ("订单id")@PathVariable("id") Long orderId) {
         Order order = orderService.getById(orderId);
-        // 查询订单详情列表（可能多条）
-        List<OrderDetail> orderDetails = orderDetailService.list(
-                Wrappers.<OrderDetail>lambdaQuery()
-                        .eq(OrderDetail::getOrderId, orderId)
-        );
-        OrderDetailVO orderDetailVO = new OrderDetailVO();
-        BeanUtils.copyProperties(order,orderDetailVO);
-        return orderDetailVO;
+        return orderDetailService.getOrderDetail(order);
     }
 
     @ApiOperation("创建订单")

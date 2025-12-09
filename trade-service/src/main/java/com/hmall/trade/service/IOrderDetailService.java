@@ -1,7 +1,9 @@
 package com.hmall.trade.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hmall.trade.domain.po.Order;
 import com.hmall.trade.domain.po.OrderDetail;
+import com.hmall.trade.domain.vo.OrderDetailVO;
 
 import java.io.Serializable;
 
@@ -14,5 +16,6 @@ import java.io.Serializable;
  * @since 2023-05-05
  */
 public interface IOrderDetailService extends IService<OrderDetail> {
+    OrderDetailVO getOrderDetail(Order order);
 
 }
