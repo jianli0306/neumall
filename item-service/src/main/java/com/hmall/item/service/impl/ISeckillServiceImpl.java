@@ -1,5 +1,4 @@
 package com.hmall.item.service.impl;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hmall.api.client.IdClient;
 import com.hmall.common.utils.BeanUtils;
@@ -10,7 +9,6 @@ import com.hmall.item.service.ISeckillService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
