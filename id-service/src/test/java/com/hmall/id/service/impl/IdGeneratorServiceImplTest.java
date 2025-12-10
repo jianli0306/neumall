@@ -15,6 +15,7 @@ class IdGeneratorServiceImplTest {
     
     @Autowired
     private IdGeneratorService idGeneratorService;
+
     
     @Test
     void testGenerateId() {

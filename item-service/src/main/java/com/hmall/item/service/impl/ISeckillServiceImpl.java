@@ -8,13 +8,11 @@ import com.hmall.item.domain.po.Seckill;
 import com.hmall.item.mapper.SeckillMapper;
 import com.hmall.item.service.ISeckillService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
 
 @Service
 @RequiredArgsConstructor
